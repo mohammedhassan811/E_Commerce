@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using E_Commerce.Application.Common;
+using E_Commerce.Application.DTOs.Baskets;
+
+namespace E_Commerce.Application.Contracts
+{
+    public interface IPaymentService
+    {
+        Task<Result<BasketDto>> CreateOrUpdatePaymentIntentAsync(string basketId, CancellationToken ct = default);
+
+        Task PaymentSucceeded(string paymentIntentId);
+        Task PaymentFailed(string paymentIntentId);
+    }
+}
